@@ -1298,9 +1298,7 @@ document.addEventListener("DOMContentLoaded", function () {
     submissionDate:"2026-2-20 11:16:23",
     description:"مشروع اعمال رفع كفاءة الطرق بالمنطقة الترفيهية بالشويفات",
     approvalDate:"2026-2-03",
-    status:"Approved",
-    reportPassword:"14518423",
-    reportFile:"./assets/report.pdf"
+    status:"Approved"
   };
 
   document.getElementById('unit-val').innerText = projectData.unit;
@@ -1310,8 +1308,20 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById('desc-val').innerText = projectData.description;
   document.getElementById('app-date-val').innerText = projectData.approvalDate;
   document.getElementById('status-val').innerText = projectData.status;
+});
 
- <script>
+// دالة التحقق من الباسوردات الجديدة
+function checkPassword() {
+    var p = document.getElementById('reportPass').value;
+    if (p === '123') {
+        window.open('./assets/old_report.pdf', '_blank');
+    } else if (p === '456') {
+        window.open('./assets/new_report.pdf', '_blank');
+    } else {
+        alert('كلمة السر خطأ يا هندسة!');
+    }
+}
+</script>
 // 1. دالة إظهار المربع وتغيير اللون
 function handleViewClick() {
     // إظهار مربع الباسورد

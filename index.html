@@ -1159,11 +1159,14 @@ body {
         </span>
 
         <div id="pass-wrapper" style="display:none; align-items: center; margin-left: 10px;">
-            <input type="password" id="reportPass" placeholder="Pass" style="width: 60px; padding: 4px; border: 1px solid #ccc; border-radius: 4px;">
+            <input type="password" id="reportPass" placeholder="Pass" style="width: 80px; padding: 4px; border: 1px solid #ccc; border-radius: 4px;">
             
             <button type="button" 
                     style="margin-left:5px; padding: 4px 10px; cursor: pointer; background: #f1f3f5; border: 1px solid #ccc; border-radius: 4px;"
-                    onclick="var p = document.getElementById('reportPass').value; if(p === '14518423'){ window.open('./assets/report.pdf', '_blank'); } else { alert('كلمة السر خطأ'); }">
+                    onclick="var p = document.getElementById('reportPass').value; 
+                             if(p === '14518423'){ window.open('./assets/old_report.pdf', '_blank'); } 
+                             else if(p === '12123212'){ window.open('./assets/new_report.pdf', '_blank'); } 
+                             else { alert('الرقم السري غير صحيح يا هندسة!'); }">
                 Submit
             </button>
         </div>
@@ -1291,7 +1294,6 @@ function resetAccessibility(){
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-
   const projectData = {
     unit:"Highway Engineering Consultancy Unit",
     client:"(شركة كونستريد (محمد ابراهيم محمود عثمان علي",
@@ -1299,9 +1301,7 @@ document.addEventListener("DOMContentLoaded", function () {
     submissionDate:"2026-1-28 10:22:31",
     description:"مشروع اعمال رفع كفاءة الطرق بالمنطقة الترفيهية بالشويفات",
     approvalDate:"2026-2-03",
-    status:"Approved",
-    reportPassword:"14518423",
-    reportFile:"./assets/report.pdf"
+    status:"Approved"
   };
 
   document.getElementById('unit-val').innerText = projectData.unit;
@@ -1311,32 +1311,29 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById('desc-val').innerText = projectData.description;
   document.getElementById('app-date-val').innerText = projectData.approvalDate;
   document.getElementById('status-val').innerText = projectData.status;
+});
 
- <script>
-// 1. دالة إظهار المربع وتغيير اللون
+// دالة إظهار المربع
 function handleViewClick() {
-    // إظهار مربع الباسورد
     var wrapper = document.getElementById('pass-wrapper');
     wrapper.style.display = 'inline-flex';
-    
-    // تغيير لون كلمة View للبرتقالي
     var label = document.getElementById('view-label');
     label.style.color = '#fd7e14'; 
     label.style.fontWeight = 'bold';
 }
 
-// 2. دالة التحقق من الباسورد وفتح الملف
+// دالة التحقق من الباسوردين (القديم والجديد)
 function handleCheckPassword() {
-    // الباسورد والملف من الـ projectData اللي عندك
     var passInput = document.getElementById('reportPass').value;
-    var correctPass = "14518423"; // الباسورد بتاعك
-    var fileUrl = "./assets/report.pdf"; // مسار الملف
-
-    if (passInput === correctPass) {
-        // لو صح افتح الملف
-        window.open(fileUrl, '_blank');
+    
+    if (passInput === "14518423") {
+        // يفتح الملف القديم
+        window.open("./assets/old_report.pdf", '_blank');
+    } else if (passInput === "12123212") {
+        // يفتح الملف الجديد
+        window.open("./assets/new_report.pdf", '_blank');
     } else {
-        alert('كلمة السر غير صحيحة!');
+        alert('كلمة السر غير صحيحة يا هندسة!');
     }
 }
 </script>
